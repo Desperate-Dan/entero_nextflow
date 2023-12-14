@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": " ",
+  "title": " ",
+  "description": "Generate assemblies from Enterovirus samples.",
+  "url": " ",
+  "type": "object",
+  "definitions": {
+    "input_options": {
+      "title": "Input Options",
+      "type": "object",
+      "fa_icon": "fas fa-terminal",
+      "description": "Define where the pipeline should find input data and save output data.",
+      "properties": {
+        "fastq": {
+          "type": "string",
+          "format": "path",
+          "title": "FASTQ",
+          "description": "",
+          "help_text": ""
+        },
+        "min": {
+          "type": "integer",
+          "format": "value",
+          "title": "Minimum read length",
+          "description": "Filter out reads shorter than this value",
+          "default": 400,
+          "help_text": ""
+        },
+        "max": {
+          "type": "integer",
+          "format": "value",
+          "title": "Maximum read length",
+          "description": "Filter out reads longer than this value",
+          "default": 800,
+          "help_text": ""
+        },
+        "medaka_model": {
+          "type": "string",
+          "format": "value",
+          "title": "Medaka Model",
+          "description": "Choose the approporiate medaka model for your analysis",
+          "help_text": "The medaka model is chosens depending on whaich flow cell type you have used, what version of Guppy you have used, and what basecalling method you have used",
+          "default": "r941_min_high_g360",
+          "enum": ["r103_fast_g507", "r103_fast_snp_g507", "r103_fast_variant_g507", "r103_hac_g507", "r103_hac_snp_g507", "r103_hac_variant_g507", "r103_min_high_g345", "r103_min_high_g360", "r103_prom_high_g360", "r103_prom_snp_g3210", "r103_prom_variant_g3210", "r103_sup_g507", "r103_sup_snp_g507", "r103_sup_variant_g507", "r1041_e82_260bps_fast_g632", "r1041_e82_260bps_fast_variant_g632", "r1041_e82_260bps_hac_g632", "r1041_e82_260bps_hac_v4.0.0", "r1041_e82_260bps_hac_v4.1.0", "r1041_e82_260bps_hac_variant_g632", "r1041_e82_260bps_hac_variant_v4.1.0", "r1041_e82_260bps_sup_g632", "r1041_e82_260bps_sup_v4.0.0", "r1041_e82_260bps_sup_v4.1.0", "r1041_e82_260bps_sup_variant_g632", "r1041_e82_260bps_sup_variant_v4.1.0", "r1041_e82_400bps_fast_g615", "r1041_e82_400bps_fast_g632", "r1041_e82_400bps_fast_variant_g615", 
+          "r1041_e82_400bps_fast_variant_g632", "r1041_e82_400bps_hac_g615", "r1041_e82_400bps_hac_g632", "r1041_e82_400bps_hac_v4.0.0", "r1041_e82_400bps_hac_v4.1.0", "r1041_e82_400bps_hac_v4.2.0", "r1041_e82_400bps_hac_variant_g615", "r1041_e82_400bps_hac_variant_g632", "r1041_e82_400bps_hac_variant_v4.1.0", "r1041_e82_400bps_hac_variant_v4.2.0", "r1041_e82_400bps_sup_g615", "r1041_e82_400bps_sup_v4.0.0", "r1041_e82_400bps_sup_v4.1.0", "r1041_e82_400bps_sup_v4.2.0", "r1041_e82_400bps_sup_variant_g615", "r1041_e82_400bps_sup_variant_v4.1.0", "r1041_e82_400bps_sup_variant_v4.2.0", "r104_e81_fast_g5015, r104_e81_fast_variant_g5015", "r104_e81_hac_g5015", "r104_e81_hac_variant_g5015", "r104_e81_sup_g5015", "r104_e81_sup_g610", "r104_e81_sup_variant_g610", "r10_min_high_g303", "r10_min_high_g340", "r941_e81_fast_g514",
+          "r941_e81_fast_variant_g514", "r941_e81_hac_g514", "r941_e81_hac_variant_g514", "r941_e81_sup_g514", "r941_e81_sup_variant_g514", "r941_min_fast_g303", "r941_min_fast_g507", "r941_min_fast_snp_g507", "r941_min_fast_variant_g507", "r941_min_hac_g507", "r941_min_hac_snp_g507", "r941_min_hac_variant_g507", "r941_min_high_g303", "r941_min_high_g330", "r941_min_high_g340_rle", "r941_min_high_g344", "r941_min_high_g351", "r941_min_high_g360", "r941_min_sup_g507", "r941_min_sup_snp_g507", "r941_min_sup_variant_g507", "r941_prom_fast_g303", "r941_prom_fast_g507", "r941_prom_fast_snp_g507", "r941_prom_fast_variant_g507", "r941_prom_hac_g507", "r941_prom_hac_snp_g507", "r941_prom_hac_variant_g507", "r941_prom_high_g303", "r941_prom_high_g330", "r941_prom_high_g344", "r941_prom_high_g360", "r941_prom_high_g4011", 
+          "r941_prom_snp_g303", "r941_prom_snp_g322", "r941_prom_snp_g360", "r941_prom_sup_g507", "r941_prom_sup_snp_g507", "r941_prom_sup_variant_g507", "r941_prom_variant_g303", "r941_prom_variant_g322", "r941_prom_variant_g360", "r941_sup_plant_g610", "r941_sup_plant_variant_g610"
+                  ]
+        }
+
+      },
+      "allOf": [
+        {
+          "required": [
+            "fastq"
+          ]
+        }
+      ]
+    },
+    "output_options": {
+      "title": "Output Options",
+      "type": "object",
+      "description": "Parameters for saving and naming workflow outputs.",
+      "properties": {
+        "out_dir": {
+          "type": "string",
+          "format": "directory-path",
+          "default": "output",
+          "title": "Output folder name",
+          "description": "Directory for output of all user-facing files."
+        }
+      }
+    },
+    "advanced_options": {
+      "title": "Advanced Options",
+      "type": "object",
+      "description": "Advanced options for configuring processes inside the workflow.",
+      "default": "",
+      "properties": {
+        "threads": {
+          "type": "integer",
+          "default": 2,
+          "title": "Maximum number of CPU threads",
+          "description": "Maximum number of CPU threads to use per workflow task.",
+          "help_text": "Several tasks in this workflow benefit from using multiple CPU threads. This option sets the number of CPU threads for all such processes. The total CPU resource used by the workflow is constrained by the executor configuration. See server threads parameter for kraken specific threads."
+        }
+      }
+    },
+    "miscellaneous_options": {
+      "title": "Miscellaneous Options",
+      "type": "object",
+      "fa_icon": "fas fa-file-import",
+      "description": "Everything else.",
+      "help_text": "These options are common to all nf-core pipelines and allow you to customise some of the core preferences for how the pipeline runs.\n\nTypically these options would be set in a Nextflow config file loaded for all pipeline runs, such as `~/.nextflow/config`.",
+      "properties": {
+        "help": {
+          "type": "boolean",
+          "title": "Display help text",
+          "fa_icon": "fas fa-question-circle",
+          "hidden": true
+        },
+        "version": {
+          "type": "boolean",
+          "title": "Display version",
+          "description": "Display version and exit.",
+          "fa_icon": "fas fa-question-circle",
+          "hidden": true
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/input_options"
+    },
+    {
+      "$ref": "#/definitions/output_options"
+    },
+    {
+      "$ref": "#/definitions/advanced_options"
+    },
+    {
+      "$ref": "#/definitions/miscellaneous_options"
+    }
+  ],
+  "properties": {
+    "aws_image_prefix": {
+      "type": "string",
+      "title": "AWS image prefix",
+      "hidden": true
+    },
+    "aws_queue": {
+      "type": "string",
+      "title": "AWS queue",
+      "hidden": true
+    },
+    "monochrome_logs": {
+      "type": "boolean"
+    },
+    "validate_params": {
+      "type": "boolean",
+      "default": true
+    },
+    "show_hidden_params": {
+      "type": "boolean"
+    }
+  },
+  "docs": {
+    "intro": "\nAn in development analysis pipeline to produce consensus genomes for vp1 sequences\n\n",
+    "links": "## Useful links\n\n* [nextflow](https://www.nextflow.io/)\n* [docker](https://www.docker.com/products/docker-desktop)"
+  }
+}
